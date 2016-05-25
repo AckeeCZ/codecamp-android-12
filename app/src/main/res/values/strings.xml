@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CodeCamp12</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_search">Search</string>
+
+    <string name="nav_feed">Feed</string>
+    <string name="nav_about_app">About app</string>
+</resources>
