@@ -4,6 +4,9 @@ import android.app.Application;
 import android.view.LayoutInflater;
 
 import com.codecamp.codecamp12.App;
+import com.codecamp.codecamp12.Constants;
+import com.codecamp.codecamp12.db.dao.BookDao;
+import com.hannesdorfmann.sqlbrite.dao.DaoManager;
 
 import javax.inject.Singleton;
 
@@ -21,10 +24,18 @@ import dagger.Provides;
 )
 public class AppModule {
     public static final String TAG = AppModule.class.getName();
+
     private final App app;
+    private final BookDao bookDao;
 
     public AppModule(App app) {
         this.app = app;
+        bookDao = new BookDao();
+        DaoManager.with(app)
+                .databaseName(Constants.DB_NAME)
+                .logging(false)
+                .add(bookDao)
+                .build();
     }
 
     @Provides
@@ -37,5 +48,11 @@ public class AppModule {
     @Singleton
     LayoutInflater provideLayoutInflater() {
         return LayoutInflater.from(app);
+    }
+
+    @Provides
+    @Singleton
+    public BookDao provideBookDao() {
+        return bookDao;
     }
 }

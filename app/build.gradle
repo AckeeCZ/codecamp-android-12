@@ -79,5 +79,6 @@ dependencies {
     // SQLBrite
     compile 'com.squareup.sqlbrite:sqlbrite:0.6.1'
     compile "com.hannesdorfmann.sqlbrite:annotations:0.6.1"
+    compile "com.hannesdorfmann.sqlbrite:dao:0.6.1"
     apt "com.hannesdorfmann.sqlbrite:object-mapper:0.6.1"
 }
