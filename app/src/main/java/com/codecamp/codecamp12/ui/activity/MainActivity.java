@@ -15,13 +15,12 @@ import android.view.MenuItem;
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
 import com.codecamp.codecamp12.mvp.view.IMainView;
+import com.codecamp.codecamp12.ui.fragment.FeedFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusAppCompatActivity;
-
-
 
 @RequiresPresenter(MainPresenter.class)
 public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implements IMainView, NavigationView.OnNavigationItemSelectedListener {
@@ -49,11 +48,11 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-//
-//        if (savedInstanceState == null) {
-//            replaceFragment(FeedFragment.class.getName());
-//            navigationView.setCheckedItem(R.id.nav_feed);
-//        }
+
+        if (savedInstanceState == null) {
+            replaceFragment(FeedFragment.class.getName());
+            navigationView.setCheckedItem(R.id.nav_feed);
+        }
     }
 
     @Override
@@ -88,7 +87,7 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
         int id = item.getItemId();
 
         if (id == R.id.nav_feed) {
-            // Handle the camera action
+            replaceFragment(FeedFragment.class.getName());
         } else if (id == R.id.nav_about_app) {
 
         }

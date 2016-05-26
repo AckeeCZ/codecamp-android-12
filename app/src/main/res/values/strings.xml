@@ -8,4 +8,7 @@
 
     <string name="nav_feed">Feed</string>
     <string name="nav_about_app">About app</string>
+
+    <string name="all">All</string>
+    <string name="featured">Featured</string>
 </resources>
