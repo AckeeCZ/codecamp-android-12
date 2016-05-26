@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.codecamp.codecamp12.db.dao.base.BaseDao;
 import com.codecamp.codecamp12.domain.model.Book;
 import com.codecamp.codecamp12.domain.model.BookMapper;
+import com.codecamp.codecamp12.domain.model.Featured;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import rx.Observable;
  */
 public class BookDao extends BaseDao<Book> {
     public static final String TAG = BookDao.class.getName();
+
 
     @Override
     public long insertItem(Book book) {
@@ -61,4 +63,12 @@ public class BookDao extends BaseDao<Book> {
                 .run()
                 .mapToList(BookMapper.MAPPER);
     }
+
+    public Observable<List<Book>> getFeaturedBooks() {
+        return query(SELECT("*").FROM(Book.TABLE_NAME)
+                .NATURAL_INNER_JOIN(Featured.TABLE_NAME))
+                .run()
+                .mapToList(BookMapper.MAPPER);
+    }
+
 }
