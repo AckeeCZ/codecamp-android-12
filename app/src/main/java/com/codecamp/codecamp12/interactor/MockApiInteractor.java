@@ -79,14 +79,15 @@ public class MockApiInteractor implements IApiInteractor {
 
 
     @Override
-    public Observable<Void> addBook(Book book) {
+    public Observable<Book> addBook(Book book) {
         return Observable.create(sub -> {
             try {
                 checkBooksFile();
                 List<Book> books = getBooksFromFile();
                 books.add(book);
                 writeBooksToFile(books);
-                sub.onNext(null);
+                book.setId(books.size());
+                sub.onNext(book);
             }catch (Exception e) {
                 sub.onError(e);
             }

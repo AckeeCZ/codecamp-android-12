@@ -25,7 +25,7 @@ public class ApiInteractor implements IApiInteractor {
     }
 
     @Override
-    public Observable<Void> addBook(Book book) {
+    public Observable<Book> addBook(Book book) {
         return this.apiDescription.addBook(book);
     }
 }

@@ -43,7 +43,7 @@ public class ServiceModule {
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
         return new Retrofit.Builder()
-                .baseUrl("some_url")
+                .baseUrl(ApiDescription.ENDPOINT_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(generateClient())

@@ -21,5 +21,5 @@ public interface ApiDescription {
     Observable<List<Book>> getBooks();
 
     @POST("/books")
-    Observable<Void> addBook(@Body Book book);
+    Observable<Book> addBook(@Body Book book);
 }

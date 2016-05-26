@@ -2,6 +2,7 @@ package com.codecamp.codecamp12.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.view.View;
 
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.mvp.presenter.AddBookPresenter;
@@ -26,6 +27,8 @@ public class AddBookActivity extends NucleusAppCompatActivity<AddBookPresenter> 
     TextInputLayout inputGenre;
     @BindView(R.id.text_input_title)
     TextInputLayout inputTitle;
+    @BindView(android.R.id.progress)
+    View progressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +63,15 @@ public class AddBookActivity extends NucleusAppCompatActivity<AddBookPresenter> 
     @Override
     public void setErrorGenre(int resId) {
         inputGenre.setError(getString(resId));
+    }
+
+    @Override
+    public void showProgress(boolean show) {
+        progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 }

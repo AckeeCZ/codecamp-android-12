@@ -14,5 +14,5 @@ public interface IApiInteractor {
 
     public Observable<List<Book>> getBooks();
 
-    public Observable<Void> addBook(Book book);
+    public Observable<Book> addBook(Book book);
 }

@@ -52,6 +52,15 @@
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:text="@string/add_book_save"/>
+
+
+        <ProgressBar
+            android:id="@android:id/progress"
+            android:layout_gravity="center_horizontal"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

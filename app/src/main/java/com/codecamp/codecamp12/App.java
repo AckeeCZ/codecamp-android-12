@@ -3,6 +3,7 @@ package com.codecamp.codecamp12;
 import android.app.Application;
 
 import com.codecamp.codecamp12.di.AppComponent;
+import com.codecamp.codecamp12.di.AppModule;
 import com.codecamp.codecamp12.di.DaggerAppComponent;
 import com.facebook.stetho.Stetho;
 
@@ -21,6 +22,7 @@ public class App extends Application {
 
         // Initialize Dagger
         appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
                 .build();
 
         // Initialize Stetho

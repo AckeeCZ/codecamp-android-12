@@ -43,6 +43,12 @@ public class Book implements Parcelable {
     @Column(COL_IMAGE)
     private String image;
 
+    public Book(String title, String genre, String author) {
+        this.title = title;
+        this.genre = genre;
+        this.author = author;
+    }
+
     public int getId() {
         return id;
     }

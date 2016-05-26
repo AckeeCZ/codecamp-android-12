@@ -9,10 +9,13 @@ public interface IAddBookView {
 
     void clearErrors();
 
-    public void setErrorTitle(int resId);
+    void setErrorTitle(int resId);
 
-    public void setErrorAuthor(int resId);
+    void setErrorAuthor(int resId);
 
-    public void setErrorGenre(int resId);
+    void setErrorGenre(int resId);
 
+    void showProgress(boolean show);
+
+    void close();
 }

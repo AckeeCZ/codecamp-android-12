@@ -32,6 +32,7 @@ public class AppModule {
         this.app = app;
         bookDao = new BookDao();
         DaoManager.with(app)
+                .version(Constants.DB_VERSION)
                 .databaseName(Constants.DB_NAME)
                 .logging(false)
                 .add(bookDao)

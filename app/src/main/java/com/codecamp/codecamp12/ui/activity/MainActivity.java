@@ -21,6 +21,7 @@ import com.codecamp.codecamp12.ui.fragment.FeedFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusAppCompatActivity;
 
@@ -40,7 +41,6 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(this, AddBookActivity.class));
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -106,5 +106,10 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
             fragment = Fragment.instantiate(this, fragmentName);
         }
         fm.beginTransaction().replace(R.id.fragment_container, fragment, fragmentName).commit();
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked() {
+        startActivity(new Intent(this, AddBookActivity.class));
     }
 }
