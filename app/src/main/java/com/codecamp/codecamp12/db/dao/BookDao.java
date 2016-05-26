@@ -52,13 +52,17 @@ public class BookDao extends BaseDao<Book> {
     }
 
     public Observable<List<Book>> getAllBooks() {
-        return query(SELECT("*").FROM(Book.TABLE_NAME))
+        return query(SELECT("*").FROM(Book.TABLE_NAME)
+                .NATURAL_LEFT_OUTER_JOIN(Featured.TABLE_NAME)
+        )
                 .run()
                 .mapToList(BookMapper.MAPPER);
     }
 
     public Observable<List<Book>> searchBooks(String query) {
-        return query(SELECT("*").FROM(Book.TABLE_NAME).WHERE(Book.COL_TITLE + " LIKE ?"))
+        return query(SELECT("*").FROM(Book.TABLE_NAME)
+                .NATURAL_LEFT_OUTER_JOIN(Featured.TABLE_NAME)
+                .WHERE(Book.COL_TITLE + " LIKE ?"))
                 .args("%" + query + "%")
                 .run()
                 .mapToList(BookMapper.MAPPER);

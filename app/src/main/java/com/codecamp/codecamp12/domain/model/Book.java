@@ -48,10 +48,14 @@ public class Book implements Parcelable {
     @Column(COL_IMAGE)
     private String image;
 
+    @Column(value = Featured.COL_FEATURED, throwOnColumnIndexNotFound = false)
+    int featured;
+
     public Book(String title, String genre, String author) {
         this.title = title;
         this.genre = genre;
         this.author = author;
+
     }
 
     public int getId() {
@@ -124,6 +128,7 @@ public class Book implements Parcelable {
         dest.writeString(this.genre);
         dest.writeString(this.color);
         dest.writeString(this.image);
+        dest.writeInt(this.featured);
     }
 
     public Book() {
@@ -137,6 +142,7 @@ public class Book implements Parcelable {
         this.genre = in.readString();
         this.color = in.readString();
         this.image = in.readString();
+        this.featured = in.readInt();
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -152,9 +158,17 @@ public class Book implements Parcelable {
     };
 
     public static int getColor(Context ctx, Book book) {
-        if(TextUtils.isEmpty(book.getColor())) {
+        if (TextUtils.isEmpty(book.getColor())) {
             return ContextCompat.getColor(ctx, R.color.colorPrimary);
         }
         return Color.parseColor(book.getColor());
+    }
+
+    public boolean isFeatured() {
+        return featured > 0;
+    }
+
+    public void setFeatured(boolean featured) {
+        this.featured = featured ? 1 : 0;
     }
 }

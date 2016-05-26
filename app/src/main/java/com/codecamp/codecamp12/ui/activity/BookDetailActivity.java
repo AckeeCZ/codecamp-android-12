@@ -3,6 +3,7 @@ package com.codecamp.codecamp12.ui.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -19,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusAppCompatActivity;
 
@@ -40,6 +42,8 @@ public class BookDetailActivity extends NucleusAppCompatActivity<BookDetailPrese
     TextView txtGenre;
     @BindView(R.id.txt_description)
     TextView txtDescription;
+    @BindView(R.id.fab_featured)
+    FloatingActionButton fabFeatured;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,7 @@ public class BookDetailActivity extends NucleusAppCompatActivity<BookDetailPrese
         showOrHideText(getString(R.string.book_author), book.getAuthor(), txtAuthor);
         showOrHideText(getString(R.string.book_genre), book.getGenre(), txtGenre);
         showOrHideText(null, book.getDescription(), txtDescription);
+        fabFeatured.setImageResource(book.isFeatured() ? R.drawable.ic_fab_like : R.drawable.ic_fab_like_full);
     }
 
     private void showOrHideText(String key, String text, TextView textView) {
@@ -75,11 +80,16 @@ public class BookDetailActivity extends NucleusAppCompatActivity<BookDetailPrese
             textView.setVisibility(View.GONE);
         } else {
             textView.setVisibility(View.VISIBLE);
-            if(!TextUtils.isEmpty(key)) {
+            if (!TextUtils.isEmpty(key)) {
                 textView.setText(Html.fromHtml("<b>" + key + ":</b> " + text));
-            }else {
+            } else {
                 textView.setText(text);
             }
         }
+    }
+
+    @OnClick(R.id.fab_featured)
+    public void onFabClicked() {
+        getPresenter().onFabClicked();
     }
 }

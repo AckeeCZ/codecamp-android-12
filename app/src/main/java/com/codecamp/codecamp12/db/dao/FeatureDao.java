@@ -18,9 +18,10 @@ public class FeatureDao extends Dao {
 
     @Override
     public void createTable(SQLiteDatabase database) {
-        CREATE_TABLE(Featured.TABLE_NAME,
-                Book.COL_ID + " INTEGER PRIMARY KEY"
-        );
+        database.execSQL(CREATE_TABLE(Featured.TABLE_NAME,
+                Book.COL_ID + " INTEGER PRIMARY KEY",
+                Featured.COL_FEATURED + " INTEGER DEFAULT 1"
+        ).getSql());
     }
 
     @Override

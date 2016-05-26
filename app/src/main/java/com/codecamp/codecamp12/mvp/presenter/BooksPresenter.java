@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.codecamp.codecamp12.App;
 import com.codecamp.codecamp12.db.dao.BookDao;
+import com.codecamp.codecamp12.db.dao.FeatureDao;
 import com.codecamp.codecamp12.domain.model.Book;
 import com.codecamp.codecamp12.mvp.view.IBooksView;
 
@@ -24,6 +25,8 @@ public class BooksPresenter extends RxPresenter<IBooksView> {
 
     @Inject
     BookDao bookDao;
+    @Inject
+    FeatureDao featureDao;
 
     private List<Book> books;
 
@@ -51,6 +54,10 @@ public class BooksPresenter extends RxPresenter<IBooksView> {
                 break;
 
             case FEATURED:
+                add(bookDao.getFeaturedBooks()
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(this::onBooksLoaded, this::onLoadFailed));
                 break;
         }
     }
@@ -77,6 +84,12 @@ public class BooksPresenter extends RxPresenter<IBooksView> {
         }
         getView().showProgress(showProgress);
         getView().showEmpty(books == null || books.isEmpty());
+    }
+
+    public void setFeatured(Book book, Boolean isChecked) {
+        featureDao.setFeatured(book.getId(), isChecked)
+                .subscribeOn(Schedulers.newThread())
+                .subscribe();
     }
 
     public enum FeedType {

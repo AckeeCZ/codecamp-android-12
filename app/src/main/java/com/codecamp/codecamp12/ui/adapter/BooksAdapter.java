@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.functions.Action1;
+import rx.functions.Action2;
 
 /**
  * Adapter for books list.
@@ -30,6 +34,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         this.books = books;
         this.type = type;
     }
+
+    Action2<Book, Boolean> checkListener;
 
     @Override
     public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,6 +67,12 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         return books.get(position);
     }
 
+
+
+    public void setCheckListener(Action2<Book, Boolean> checkListener) {
+        this.checkListener = checkListener;
+    }
+
     abstract class BookViewHolder extends RecyclerView.ViewHolder {
 
         public BookViewHolder(View itemView) {
@@ -79,6 +91,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         TextView txtAuthor;
         @BindView(R.id.indicator_color)
         View indicatorColor;
+        @BindView(R.id.check_featured)
+        CheckBox checkFeatured;
 
         public ListViewHolder(View itemView) {
             super(itemView);
@@ -89,6 +103,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
             indicatorColor.setBackgroundColor(Book.getColor(itemView.getContext(), book));
             txtTitle.setText(book.getTitle());
             txtAuthor.setText(book.getAuthor());
+            checkFeatured.setOnCheckedChangeListener(null);
+            checkFeatured.setChecked(book.isFeatured());
+            checkFeatured.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if(checkListener != null) {
+                    checkListener.call(book, isChecked);
+                }
+            });
         }
     }
 

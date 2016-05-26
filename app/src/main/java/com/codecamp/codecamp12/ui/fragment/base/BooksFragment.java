@@ -18,6 +18,7 @@ import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusSupportFragment;
+import rx.functions.Action1;
 
 /**
  * TODO: add a comment
@@ -54,7 +55,9 @@ public abstract class BooksFragment extends NucleusSupportFragment<BooksPresente
 
     private void initRecyclerView(View view) {
         adapter = new BooksAdapter(getAdapterType(), null);
-
+adapter.setCheckListener((b, isChecked)-> {
+    getPresenter().setFeatured(b, isChecked);
+});
         recyclerViewHelper = RecyclerViewHelper.attach(this);
         recyclerViewHelper.onViewCreated(view);
         recyclerViewHelper.setEmptyResId(R.layout.view_empty_list);

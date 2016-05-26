@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?attr/selectableItemBackground"
+              android:orientation="horizontal">
 
     <View
         android:id="@+id/indicator_color"
         android:layout_width="4dp"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,6 +17,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -26,7 +27,7 @@
             android:alpha="0.87"
             android:textColor="@android:color/black"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txt_author"
@@ -34,6 +35,13 @@
             android:layout_height="wrap_content"
             android:alpha="0.54"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/check_featured"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

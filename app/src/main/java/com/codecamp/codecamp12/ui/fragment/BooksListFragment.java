@@ -1,7 +1,9 @@
 package com.codecamp.codecamp12.ui.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.codecamp.codecamp12.mvp.presenter.BooksPresenter;
 import com.codecamp.codecamp12.ui.adapter.BooksAdapter;

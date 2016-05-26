@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import com.codecamp.codecamp12.App;
 import com.codecamp.codecamp12.Constants;
 import com.codecamp.codecamp12.db.dao.BookDao;
+import com.codecamp.codecamp12.db.dao.FeatureDao;
 import com.hannesdorfmann.sqlbrite.dao.DaoManager;
 
 import javax.inject.Singleton;
@@ -27,15 +28,18 @@ public class AppModule {
 
     private final App app;
     private final BookDao bookDao;
+    private final FeatureDao featuredDao;
 
     public AppModule(App app) {
         this.app = app;
         bookDao = new BookDao();
+        featuredDao = new FeatureDao();
         DaoManager.with(app)
                 .version(Constants.DB_VERSION)
                 .databaseName(Constants.DB_NAME)
                 .logging(false)
                 .add(bookDao)
+                .add(featuredDao)
                 .build();
     }
 
@@ -55,5 +59,12 @@ public class AppModule {
     @Singleton
     public BookDao provideBookDao() {
         return bookDao;
+    }
+
+
+    @Provides
+    @Singleton
+    public FeatureDao provideFeaturedDao() {
+        return featuredDao;
     }
 }
