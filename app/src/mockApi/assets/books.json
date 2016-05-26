@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Rationality: From AI to Zombies",
+    "author": "Eliezer Yudkowsky",
+    "genre": "Psychology",
+    "color": "#90CAF9",
+    "image": "http://lorempixel.com/800/400/"
+  },
+  {
+    "id": 2,
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "color": "#A5D6A7",
+    "image": "http://lorempixel.com/800/400/"
+  },
+  {
+    "id": 3,
+    "title": "Superintelligence: Paths, Dangers, Strategies",
+    "author": "Nick Bostrom",
+    "genre": "Popular science",
+    "color": "#FFCC80",
+    "image": "http://lorempixel.com/800/400/"
+  },
+  {
+    "id": 4,
+    "title": "The Black Obelisk",
+    "author": "Erich Maria Remarque",
+    "genre": "Novel",
+    "color": "#80CBC4",
+    "image": "http://lorempixel.com/806/403/"
+  },
+  {
+    "id": 5,
+    "title": "Ender's Game",
+    "author": "Orson Scott Card",
+    "genre": "Science fiction",
+    "color": "#CE93D8",
+    "image": "http://lorempixel.com/808/404/"
+  },
+  {
+    "id": 6,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Dystopian fiction",
+    "color": "#EF9A9A",
+    "image": "http://lorempixel.com/810/405/"
+  }
+]

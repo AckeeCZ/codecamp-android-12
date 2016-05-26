@@ -1,5 +1,6 @@
 package com.codecamp.codecamp12.di;
 
+import com.codecamp.codecamp12.interactor.MockApiInteractor;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
 
 import javax.inject.Singleton;
@@ -14,4 +15,6 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
     void inject(MainPresenter mainPresenter);
+
+    void inject(MockApiInteractor mockApiInteractor);
 }

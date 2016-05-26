@@ -12,6 +12,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -98,4 +99,11 @@ dependencies {
     compile "com.hannesdorfmann.sqlbrite:annotations:0.6.1"
     compile "com.hannesdorfmann.sqlbrite:dao:0.6.1"
     apt "com.hannesdorfmann.sqlbrite:object-mapper:0.6.1"
+
+    // testing
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile "com.android.support:support-annotations:23.4.0"
+
 }

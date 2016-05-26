@@ -1,6 +1,11 @@
 package com.codecamp.codecamp12.interactor;
 
+import com.codecamp.codecamp12.domain.model.Book;
 import com.codecamp.codecamp12.domain.rest.ApiDescription;
+
+import java.util.List;
+
+import rx.Observable;
 
 /**
  * TODO: add a comment
@@ -12,5 +17,15 @@ public class ApiInteractor implements IApiInteractor {
 
     public ApiInteractor(ApiDescription apiDescription) {
         this.apiDescription = apiDescription;
+    }
+
+    @Override
+    public Observable<List<Book>> getBooks() {
+        return this.apiDescription.getBooks();
+    }
+
+    @Override
+    public Observable<Void> addBook(Book book) {
+        return this.apiDescription.addBook(book);
     }
 }
