@@ -2,6 +2,8 @@ package com.codecamp.codecamp12.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.codecamp.codecamp12.R;
@@ -35,7 +37,19 @@ public class AddBookActivity extends NucleusAppCompatActivity<AddBookPresenter> 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
         ButterKnife.bind(this);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.add_book);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @OnClick(R.id.btn_save)

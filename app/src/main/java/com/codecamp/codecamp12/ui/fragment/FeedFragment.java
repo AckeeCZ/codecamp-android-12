@@ -1,13 +1,17 @@
 package com.codecamp.codecamp12.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +19,11 @@ import android.view.ViewGroup;
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.mvp.presenter.FeedPresenter;
 import com.codecamp.codecamp12.mvp.view.IFeedView;
+import com.codecamp.codecamp12.ui.activity.AddBookActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusSupportFragment;
 
@@ -29,6 +35,8 @@ import nucleus.view.NucleusSupportFragment;
 public class FeedFragment extends NucleusSupportFragment<FeedPresenter> implements IFeedView {
     public static final String TAG = FeedFragment.class.getName();
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.tab_layout)
@@ -45,6 +53,9 @@ public class FeedFragment extends NucleusSupportFragment<FeedPresenter> implemen
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
         getActivity().setTitle(getString(R.string.nav_feed));
         initViewPager();
     }
@@ -52,6 +63,11 @@ public class FeedFragment extends NucleusSupportFragment<FeedPresenter> implemen
     private void initViewPager() {
         viewPager.setAdapter(new FragmentAdapter(getActivity(), getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked() {
+        startActivity(new Intent(getActivity(), AddBookActivity.class));
     }
 
     public static class FragmentAdapter extends FragmentPagerAdapter {

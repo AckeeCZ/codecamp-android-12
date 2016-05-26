@@ -27,10 +27,6 @@ import nucleus.view.NucleusAppCompatActivity;
 @RequiresPresenter(MainPresenter.class)
 public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implements IMainView, NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
@@ -41,13 +37,6 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -74,13 +63,14 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_search) {
-            startActivity(new Intent(this, SearchActivity.class));
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchActivity.class));
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -106,10 +96,5 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
             fragment = Fragment.instantiate(this, fragmentName);
         }
         fm.beginTransaction().replace(R.id.fragment_container, fragment, fragmentName).commit();
-    }
-
-    @OnClick(R.id.fab)
-    public void onFabClicked() {
-        startActivity(new Intent(this, AddBookActivity.class));
     }
 }

@@ -1,5 +1,6 @@
 package com.codecamp.codecamp12.ui.fragment.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +10,12 @@ import android.view.ViewGroup;
 
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.domain.model.Book;
+import com.codecamp.codecamp12.mvp.presenter.BookDetailPresenter;
 import com.codecamp.codecamp12.mvp.presenter.BooksPresenter;
 import com.codecamp.codecamp12.mvp.view.IBooksView;
+import com.codecamp.codecamp12.ui.activity.BookDetailActivity;
 import com.codecamp.codecamp12.ui.adapter.BooksAdapter;
+import com.codecamp.codecamp12.ui.fragment.helper.ItemClickSupport;
 import com.codecamp.codecamp12.ui.fragment.helper.RecyclerViewHelper;
 
 import java.util.List;
@@ -61,6 +65,12 @@ adapter.setCheckListener((b, isChecked)-> {
         recyclerViewHelper = RecyclerViewHelper.attach(this);
         recyclerViewHelper.onViewCreated(view);
         recyclerViewHelper.setEmptyResId(R.layout.view_empty_list);
+
+        recyclerViewHelper.setOnItemClickListener((recyclerView, position, v) -> {
+            Intent i = new Intent(getActivity(), BookDetailActivity.class);
+            i.putExtras(BookDetailPresenter.getArguments(adapter.getItem(position)));
+            startActivity(i);
+        });
     }
 
     @Override

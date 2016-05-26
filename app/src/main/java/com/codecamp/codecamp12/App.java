@@ -6,6 +6,8 @@ import com.codecamp.codecamp12.di.AppComponent;
 import com.codecamp.codecamp12.di.AppModule;
 import com.codecamp.codecamp12.di.DaggerAppComponent;
 import com.facebook.stetho.Stetho;
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 /**
  * TODO: add a comment

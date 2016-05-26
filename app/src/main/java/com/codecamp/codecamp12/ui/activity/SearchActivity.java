@@ -68,7 +68,7 @@ public class SearchActivity extends NucleusAppCompatActivity<SearchPresenter> im
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(v->finish());
+        toolbar.setNavigationOnClickListener(v -> finish());
     }
 
     private void initRecyclerView() {
@@ -83,7 +83,6 @@ public class SearchActivity extends NucleusAppCompatActivity<SearchPresenter> im
         Intent i = new Intent(this, BookDetailActivity.class);
         i.putExtras(BookDetailPresenter.getArguments(book));
         startActivity(i);
-
     }
 
     private void initEmptyView() {
