@@ -1,8 +1,6 @@
 package com.codecamp.codecamp12.ui.adapter;
 
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +57,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         return books == null ? 0 : books.size();
     }
 
+    public Book getItem(int position) {
+        return books.get(position);
+    }
+
     abstract class BookViewHolder extends RecyclerView.ViewHolder {
 
         public BookViewHolder(View itemView) {
@@ -84,7 +86,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
 
         @Override
         public void bindView(Book book) {
-            indicatorColor.setBackgroundColor(TextUtils.isEmpty(book.getColor()) ? Color.WHITE : Color.parseColor(book.getColor()));
+            indicatorColor.setBackgroundColor(Book.getColor(itemView.getContext(), book));
             txtTitle.setText(book.getTitle());
             txtAuthor.setText(book.getAuthor());
         }

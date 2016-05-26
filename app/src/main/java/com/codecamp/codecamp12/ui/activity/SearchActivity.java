@@ -1,10 +1,12 @@
 package com.codecamp.codecamp12.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -12,9 +14,11 @@ import android.widget.FrameLayout;
 
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.domain.model.Book;
+import com.codecamp.codecamp12.mvp.presenter.BookDetailPresenter;
 import com.codecamp.codecamp12.mvp.presenter.SearchPresenter;
 import com.codecamp.codecamp12.mvp.view.ISearchView;
 import com.codecamp.codecamp12.ui.adapter.BooksAdapter;
+import com.codecamp.codecamp12.ui.fragment.helper.ItemClickSupport;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
 import java.util.List;
@@ -71,6 +75,15 @@ public class SearchActivity extends NucleusAppCompatActivity<SearchPresenter> im
         adapter = new BooksAdapter(BooksAdapter.Type.LIST, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        ItemClickSupport.addTo(recyclerView)
+                .setOnItemClickListener((recyclerView1, position, v) -> SearchActivity.this.onItemClicked(adapter.getItem(position)));
+    }
+
+    public void onItemClicked(Book book) {
+        Intent i = new Intent(this, BookDetailActivity.class);
+        i.putExtras(BookDetailPresenter.getArguments(book));
+        startActivity(i);
+
     }
 
     private void initEmptyView() {
@@ -114,6 +127,7 @@ public class SearchActivity extends NucleusAppCompatActivity<SearchPresenter> im
 
     @Override
     public void showProgress(boolean show) {
+        Log.d(TAG, "showProgress() called with: " + "show = [" + show + "]");
         progress.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 

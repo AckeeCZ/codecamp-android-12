@@ -1,8 +1,13 @@
 package com.codecamp.codecamp12.domain.model;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 
+import com.codecamp.codecamp12.R;
 import com.hannesdorfmann.sqlbrite.objectmapper.annotation.Column;
 import com.hannesdorfmann.sqlbrite.objectmapper.annotation.ObjectMappable;
 
@@ -145,4 +150,11 @@ public class Book implements Parcelable {
             return new Book[size];
         }
     };
+
+    public static int getColor(Context ctx, Book book) {
+        if(TextUtils.isEmpty(book.getColor())) {
+            return ContextCompat.getColor(ctx, R.color.colorPrimary);
+        }
+        return Color.parseColor(book.getColor());
+    }
 }

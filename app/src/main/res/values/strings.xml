@@ -22,5 +22,7 @@
     <string name="featured">Featured</string>
     <string name="search">Search</string>
     <string name="list_empty">No data to show</string>
+    <string name="book_author">Author</string>
+    <string name="book_genre">Genre</string>
 
 </resources>
