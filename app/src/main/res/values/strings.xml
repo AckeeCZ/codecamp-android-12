@@ -8,6 +8,7 @@
 
     <string name="nav_feed">Feed</string>
     <string name="nav_about_app">About app</string>
+
     <string name="add_book_title_hint">Title</string>
     <string name="add_book_genre_title">Genre</string>
     <string name="add_book_genre_author">Author</string>
@@ -15,4 +16,9 @@
     <string name="add_book_error_empty_title">Title cannot be empty</string>
     <string name="add_book_error_empty_genre">Genre cannot be empty</string>
     <string name="add_book_error_empty_author">Author cannot be empty</string>
+
+
+    <string name="all">All</string>
+    <string name="featured">Featured</string>
+
 </resources>
