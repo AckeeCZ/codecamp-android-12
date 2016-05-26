@@ -2,6 +2,7 @@ package com.codecamp.codecamp12.di;
 
 
 import com.codecamp.codecamp12.domain.rest.ApiDescription;
+import com.codecamp.codecamp12.interactor.ApiInteractorFactory;
 import com.codecamp.codecamp12.interactor.IApiInteractor;
 import com.codecamp.codecamp12.interactor.MockApiInteractor;
 
@@ -23,6 +24,6 @@ public class InteractorsModule {
     @Provides
     @Singleton
     public IApiInteractor provideApiInteractor(ApiDescription apiDescription) {
-        return new MockApiInteractor();
+        return ApiInteractorFactory.provideApiInteractor(apiDescription);
     }
 }

@@ -21,6 +21,23 @@ android {
         }
     }
 
+    productFlavors {
+
+        flavorDimensions "api"
+
+        devApi {
+            dimension "api"
+        }
+        prodApi {
+            dimension "api"
+        }
+
+        mockApi {
+            dimension "api"
+        }
+
+    }
+
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8

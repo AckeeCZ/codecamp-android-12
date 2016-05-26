@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
 import com.codecamp.codecamp12.mvp.view.IMainView;
-import com.codecamp.codecamp12.ui.fragment.FeedFragment;
+//import com.codecamp.codecamp12.ui.fragment.FeedFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,11 +52,11 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        if (savedInstanceState == null) {
-            replaceFragment(FeedFragment.class.getName());
-            navigationView.setCheckedItem(R.id.nav_feed);
-        }
+//
+//        if (savedInstanceState == null) {
+//            replaceFragment(FeedFragment.class.getName());
+//            navigationView.setCheckedItem(R.id.nav_feed);
+//        }
     }
 
     @Override
