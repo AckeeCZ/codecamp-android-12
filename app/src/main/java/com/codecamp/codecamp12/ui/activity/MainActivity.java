@@ -1,5 +1,6 @@
 package com.codecamp.codecamp12.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codecamp.codecamp12.R;
+import com.codecamp.codecamp12.mvp.presenter.AddBookPresenter;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
 import com.codecamp.codecamp12.mvp.view.IMainView;
 
@@ -39,6 +41,7 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, AddBookActivity.class));
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
