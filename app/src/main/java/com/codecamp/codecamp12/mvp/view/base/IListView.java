@@ -1,4 +1,4 @@
-package com.codecamp.codecamp12.mvp.view;
+package com.codecamp.codecamp12.mvp.view.base;
 
 import java.util.List;
 

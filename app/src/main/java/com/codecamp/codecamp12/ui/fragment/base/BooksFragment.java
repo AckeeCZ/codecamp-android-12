@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.codecamp.codecamp12.R;
 import com.codecamp.codecamp12.domain.model.Book;
 import com.codecamp.codecamp12.mvp.presenter.BooksPresenter;
-import com.codecamp.codecamp12.mvp.view.IListView;
+import com.codecamp.codecamp12.mvp.view.IBooksView;
 import com.codecamp.codecamp12.ui.adapter.BooksAdapter;
 import com.codecamp.codecamp12.ui.fragment.helper.RecyclerViewHelper;
 
@@ -25,12 +25,20 @@ import nucleus.view.NucleusSupportFragment;
  */
 @RequiresPresenter(BooksPresenter.class)
 public abstract class BooksFragment extends NucleusSupportFragment<BooksPresenter>
-        implements RecyclerViewHelper.RecyclerViewHelperInterface, IListView<Book> {
+        implements RecyclerViewHelper.RecyclerViewHelperInterface, IBooksView {
     public static final String TAG = BooksFragment.class.getName();
 
     protected RecyclerViewHelper recyclerViewHelper;
 
     protected BooksAdapter adapter;
+
+    @Override
+    public void onCreate(Bundle savedState) {
+        super.onCreate(savedState);
+        if (savedState == null) {
+            getPresenter().loadBooks(getFeedType());
+        }
+    }
 
     @Nullable
     @Override
@@ -45,8 +53,11 @@ public abstract class BooksFragment extends NucleusSupportFragment<BooksPresente
     }
 
     private void initRecyclerView(View view) {
+        adapter = new BooksAdapter(getAdapterType(), null);
+
         recyclerViewHelper = RecyclerViewHelper.attach(this);
         recyclerViewHelper.onViewCreated(view);
+        recyclerViewHelper.setEmptyResId(R.layout.view_empty_list);
     }
 
     @Override
@@ -56,8 +67,20 @@ public abstract class BooksFragment extends NucleusSupportFragment<BooksPresente
 
     @Override
     public void showData(List<Book> data) {
-        adapter = new BooksAdapter(getAdapterType(), data);
+        adapter.setData(data);
     }
 
     protected abstract BooksAdapter.Type getAdapterType();
+
+    protected abstract BooksPresenter.FeedType getFeedType();
+
+    @Override
+    public void showProgress(boolean show) {
+        recyclerViewHelper.showProgress(show);
+    }
+
+    @Override
+    public void showEmpty(boolean show) {
+        recyclerViewHelper.showEmpty(show);
+    }
 }

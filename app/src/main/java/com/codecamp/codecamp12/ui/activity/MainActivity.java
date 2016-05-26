@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codecamp.codecamp12.R;
-import com.codecamp.codecamp12.mvp.presenter.AddBookPresenter;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
 import com.codecamp.codecamp12.mvp.view.IMainView;
 import com.codecamp.codecamp12.ui.fragment.FeedFragment;

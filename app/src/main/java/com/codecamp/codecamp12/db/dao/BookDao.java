@@ -49,6 +49,12 @@ public class BookDao extends BaseDao<Book> {
                 .getSql());
     }
 
+    public Observable<List<Book>> getAllBooks() {
+        return query(SELECT("*").FROM(Book.TABLE_NAME))
+                .run()
+                .mapToList(BookMapper.MAPPER);
+    }
+
     public Observable<List<Book>> searchBooks(String query) {
         return query(SELECT("*").FROM(Book.TABLE_NAME).WHERE(Book.COL_TITLE + " LIKE ?"))
                 .args("%" + query + "%")

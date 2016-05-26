@@ -17,7 +17,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-
     <style name="SearchBar">
         <item name="android:textStyle">bold</item>
         <item name="android:textColorHint">#7fffffff</item>

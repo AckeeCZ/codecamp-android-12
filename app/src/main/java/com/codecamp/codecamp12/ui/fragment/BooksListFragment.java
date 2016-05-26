@@ -3,6 +3,7 @@ package com.codecamp.codecamp12.ui.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.codecamp.codecamp12.mvp.presenter.BooksPresenter;
 import com.codecamp.codecamp12.ui.adapter.BooksAdapter;
 import com.codecamp.codecamp12.ui.fragment.base.BooksFragment;
 
@@ -21,5 +22,10 @@ public class BooksListFragment extends BooksFragment {
     @Override
     protected BooksAdapter.Type getAdapterType() {
         return BooksAdapter.Type.LIST;
+    }
+
+    @Override
+    public BooksPresenter.FeedType getFeedType() {
+        return BooksPresenter.FeedType.ALL;
     }
 }

@@ -4,7 +4,7 @@
     "title": "Rationality: From AI to Zombies",
     "author": "Eliezer Yudkowsky",
     "genre": "Psychology",
-    "color": "#90CAF9",
+    "color": "#00BBD3",
     "image": "http://lorempixel.com/800/400/"
   },
   {
@@ -12,7 +12,7 @@
     "title": "The Lord of the Rings",
     "author": "J.R.R. Tolkien",
     "genre": "Fantasy",
-    "color": "#A5D6A7",
+    "color": "#8AC249",
     "image": "http://lorempixel.com/800/400/"
   },
   {
@@ -20,7 +20,7 @@
     "title": "Superintelligence: Paths, Dangers, Strategies",
     "author": "Nick Bostrom",
     "genre": "Popular science",
-    "color": "#FFCC80",
+    "color": "#FEC006",
     "image": "http://lorempixel.com/800/400/"
   },
   {
@@ -28,7 +28,7 @@
     "title": "The Black Obelisk",
     "author": "Erich Maria Remarque",
     "genre": "Novel",
-    "color": "#80CBC4",
+    "color": "#785447",
     "image": "http://lorempixel.com/806/403/"
   },
   {
@@ -36,7 +36,7 @@
     "title": "Ender's Game",
     "author": "Orson Scott Card",
     "genre": "Science fiction",
-    "color": "#CE93D8",
+    "color": "#3E50B4",
     "image": "http://lorempixel.com/808/404/"
   },
   {
@@ -44,7 +44,7 @@
     "title": "Brave New World",
     "author": "Aldous Huxley",
     "genre": "Dystopian fiction",
-    "color": "#EF9A9A",
+    "color": "#FE5621",
     "image": "http://lorempixel.com/810/405/"
   }
 ]
