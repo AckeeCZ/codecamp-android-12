@@ -2,6 +2,7 @@ package com.codecamp.codecamp12.ui.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,11 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         holder.bindView(books.get(position));
     }
 
+    public void setData(List<Book> books) {
+        this.books = books;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return books == null ? 0 : books.size();
@@ -78,7 +84,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
 
         @Override
         public void bindView(Book book) {
-            indicatorColor.setBackgroundColor(Color.parseColor(book.getColor()));
+            indicatorColor.setBackgroundColor(TextUtils.isEmpty(book.getColor()) ? Color.WHITE : Color.parseColor(book.getColor()));
             txtTitle.setText(book.getTitle());
             txtAuthor.setText(book.getAuthor());
         }
@@ -113,7 +119,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         }
     }
 
-    public enum Type{
+    public enum Type {
         LIST, CARD
     }
 }

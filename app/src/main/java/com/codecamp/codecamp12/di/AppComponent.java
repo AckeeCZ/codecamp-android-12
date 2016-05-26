@@ -3,6 +3,7 @@ package com.codecamp.codecamp12.di;
 import com.codecamp.codecamp12.interactor.MockApiInteractor;
 import com.codecamp.codecamp12.mvp.presenter.AddBookPresenter;
 import com.codecamp.codecamp12.mvp.presenter.MainPresenter;
+import com.codecamp.codecamp12.mvp.presenter.SearchPresenter;
 
 import javax.inject.Singleton;
 
@@ -20,4 +21,6 @@ public interface AppComponent {
     void inject(MockApiInteractor mockApiInteractor);
 
     void inject(AddBookPresenter addBookPresenter);
+
+    void inject(SearchPresenter searchPresenter);
 }

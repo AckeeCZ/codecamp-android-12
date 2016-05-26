@@ -78,6 +78,7 @@ public class MainActivity extends NucleusAppCompatActivity<MainPresenter> implem
         int id = item.getItemId();
 
         if (id == R.id.action_search) {
+            startActivity(new Intent(this, SearchActivity.class));
             return true;
         }
 

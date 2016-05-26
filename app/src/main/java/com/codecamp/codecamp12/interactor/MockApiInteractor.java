@@ -10,7 +10,6 @@ import com.codecamp.codecamp12.domain.model.Book;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
 import java.io.BufferedWriter;
 import java.io.File;
